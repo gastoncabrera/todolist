@@ -1,24 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import Header from "./components/Header";
+import Main from "./components/Main";
+import "./sass/page/home.scss";
 
+const inicialDb = [
+  {
+    id: 1,
+    title: "tarea 1",
+    activity: "limpiar",
+    complete: false,
+  },
+  {
+    id: 2,
+    title: "tarea 2",
+    activity: "actualizar la base de datos de la aplicacion",
+    complete: false,
+  },
+];
 function App() {
+  const [db, setDb] = useState(inicialDb);
+  const [dataToEdit, setDataToEdit] = useState(null);
+
+  const createHomework = (data) => {
+    data.id = Date.now();
+    setDb([...db, data]);
+  };
+  const updateHomework = (data, id) => {};
+  const deleteHomework = () => {};
+  const completeHomework = () => {};
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header />
+      <Main
+        db={db}
+        setDb={setDb}
+        createHomework={createHomework}
+        dataToEdit={dataToEdit}
+        setDataToEdit={setDataToEdit}
+      />
+    </>
   );
 }
 
