@@ -1,13 +1,14 @@
 .modal {
   display: flex;
+  backdrop-filter: blur(5px);
   color: white;
   position: absolute;
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.705);
 }
 .modal__container {
+  max-width: 600px;
   position: absolute;
   top: 20.5%;
   left: 15%;
@@ -55,6 +56,7 @@
 }
 .modal__inputActivity {
   margin-left: 10px;
+  font-family: $font-primary;
 }
 .desactive {
   display: none;
@@ -73,5 +75,31 @@
   padding: 5px 10px;
   &:active {
     transform: scale(0.9);
+  }
+}
+@include breakpoint(md) {
+  .modal__form {
+    width: 350px;
+  }
+  .modal__container {
+    left: 20%;
+  }
+  .modal__title {
+    font-size: 20px;
+  }
+  .modal__activity {
+    font-size: 20px;
+  }
+}
+@include breakpoint(lg) {
+  .modal__container {
+    left: 30%;
+  }
+  .modal__inputTitle {
+    width: 200px;
+    height: 25px;
+  }
+  .modal__inputActivity {
+    width: 200px;
   }
 }

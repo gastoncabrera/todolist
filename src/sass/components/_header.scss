@@ -5,3 +5,61 @@
   padding: 20px 10px;
   margin: 0 auto;
 }
+.header__rightContainer {
+  display: flex;
+}
+.header__nightMode {
+  width: 60px;
+  height: 30px;
+  margin-right: 10px;
+}
+.header__nightModeContainer {
+  position: relative;
+  background-color: #c3c3c3;
+  border-radius: 30px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header__nightModeBtn {
+  position: absolute;
+  top: 1px;
+  background-color: white;
+  height: 28px;
+  width: 28px;
+  border-radius: 50%;
+  margin-left: 1px;
+}
+.header__nightModeMoon,
+.header__nightModeDay {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.header__nightModeMoon {
+  margin-right: 5px;
+}
+.header__nightModeDay {
+  margin-left: 5px;
+}
+.day {
+  right: 1px;
+}
+.moon {
+  left: 0;
+}
+.header__login {
+  width: 90px;
+  border-radius: 5px;
+  padding: 5px 10px;
+  color: white;
+  border: none;
+  background-color: #2980b9;
+}
+.header__logo {
+  font-size: 24px;
+  font-weight: 900;
+  color: #2980b9;
+}

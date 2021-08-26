@@ -5,7 +5,11 @@
   justify-content: center;
   align-items: center;
 }
-.homework__title {
+.homework__titleIncomplete {
+  width: 100%;
+}
+.homework__titleComplete {
+  text-decoration: line-through;
   width: 100%;
 }
 .homework__titleContainer {
@@ -38,8 +42,15 @@
   display: none;
 }
 .homework_descriptionContainerActive {
+  width: 100%;
   display: flex;
 }
 .item {
   margin: 0 5px;
+}
+.homework__descriptionDay {
+  color: black;
+}
+.homework__descriptionNight {
+  color: white;
 }

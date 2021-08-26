@@ -1,12 +1,26 @@
 import React, { useState } from "react";
 
-const Homework = ({ item }) => {
+const Homework = ({
+  item,
+  setDataToEdit,
+  completeHomework,
+  deleteHomework,
+  nightMode,
+}) => {
   const [description, setDescription] = useState(false);
+  const [complete, setComplete] = useState(false);
+
+  const completefunction = () => {
+    completeHomework(item);
+    setComplete(true);
+  };
   return (
     <div className="homework__container">
       <div className="homework__titleContainer">
         <h4
-          className="homework__title"
+          className={
+            complete ? "homework__titleComplete" : "homework__titleIncomplete"
+          }
           onClick={() => setDescription(!description)}
         >
           {item.title}
@@ -14,7 +28,7 @@ const Homework = ({ item }) => {
         <div className="homework__itemsContainer">
           <div
             className="homework__edit item"
-            onClick={() => console.log("edit")}
+            onClick={() => setDataToEdit(item)}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -29,7 +43,7 @@ const Homework = ({ item }) => {
           </div>
           <div
             className="homework__check item"
-            onClick={() => console.log("check")}
+            onClick={() => completefunction(item)}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -44,7 +58,7 @@ const Homework = ({ item }) => {
           </div>
           <div
             className="homework__delete item"
-            onClick={() => console.log("delete")}
+            onClick={() => deleteHomework(item.id)}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -70,7 +84,15 @@ const Homework = ({ item }) => {
             : "homework_descriptionContainerActive"
         }
       >
-        {item.activity}
+        <div
+          className={
+            nightMode
+              ? "homework__descriptionDay"
+              : "homework__descriptionNight"
+          }
+        >
+          {item.activity}
+        </div>
       </div>
     </div>
   );
