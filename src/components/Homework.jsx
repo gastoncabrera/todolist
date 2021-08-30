@@ -1,15 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import CrudContext from "../context/CrudContext";
+import NightMode from "../context/NightMode";
 
-const Homework = ({
-  item,
-  setDataToEdit,
-  completeHomework,
-  deleteHomework,
-  nightMode,
-}) => {
+const Homework = ({ item }) => {
+  const { setDataToEdit, completeHomework, deleteHomework } =
+    useContext(CrudContext);
   const [description, setDescription] = useState(false);
   const [complete, setComplete] = useState(false);
-
+  const { nightMode } = useContext(NightMode);
+  const edit = (item) => {
+    if (!item.complete) setDataToEdit(item);
+    else {
+      alert("No se puede editar una tarea completada");
+    }
+  };
   const completefunction = () => {
     completeHomework(item);
     setComplete(true);
@@ -26,10 +30,7 @@ const Homework = ({
           {item.title}
         </h4>
         <div className="homework__itemsContainer">
-          <div
-            className="homework__edit item"
-            onClick={() => setDataToEdit(item)}
-          >
+          <div className="homework__edit item" onClick={() => edit(item)}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="20"

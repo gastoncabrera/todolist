@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
+import ModalContext from "../context/ModalContext";
 
-const Add = ({ setModal, setForm, initialForm }) => {
+const Add = ({ setForm, initialForm }) => {
+  const { setModal } = useContext(ModalContext);
   const add = () => {
     setModal(true);
     setForm(initialForm);

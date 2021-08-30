@@ -1,27 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Homework from "./Homework";
 import ModalForm from "./ModalForm";
 import Add from "./Add";
+import NightMode from "../context/NightMode";
+import ModalContext from "../context/ModalContext";
+import CrudContext from "../context/CrudContext";
 const initialForm = {
   title: "",
   activity: "",
   id: null,
   complete: false,
 };
-const Main = ({
-  db,
-  setDb,
-  createHomework,
-  dataToEdit,
-  setDataToEdit,
-  updateHomework,
-  modal,
-  setModal,
-  completeHomework,
-  deleteHomework,
-  nightMode,
-}) => {
+const Main = () => {
   const [form, setForm] = useState(initialForm);
+  const { modal, setModal } = useContext(ModalContext);
+  const { db, createHomework, dataToEdit, updateHomework } =
+    useContext(CrudContext);
+
   useEffect(() => {
     if (dataToEdit) {
       setForm(dataToEdit);
@@ -51,29 +46,14 @@ const Main = ({
     setModal(false);
     setForm(initialForm);
   };
+  const { nightMode } = useContext(NightMode);
 
   return (
     <div className="main">
       <div className="main__container container">
-        <Add
-          db={db}
-          setModal={setModal}
-          setForm={setForm}
-          initialForm={initialForm}
-        />
+        <Add db={db} setForm={setForm} initialForm={initialForm} />
         {db.length !== 0 ? (
-          db.map((item) => (
-            <Homework
-              deleteHomework={deleteHomework}
-              key={item.id}
-              item={item}
-              dataToEdit={dataToEdit}
-              setDataToEdit={setDataToEdit}
-              updateHomework={updateHomework}
-              completeHomework={completeHomework}
-              nightMode={nightMode}
-            />
-          ))
+          db.map((item) => <Homework key={item.id} item={item} />)
         ) : (
           <h4
             className={
@@ -84,7 +64,7 @@ const Main = ({
           </h4>
         )}
       </div>
-      <ModalForm modal={modal}>
+      <ModalForm>
         <form className="modal__form" onSubmit={handleSubmit}>
           <label htmlFor="tarea" className="modal__title">
             Titulo
