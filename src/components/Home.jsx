@@ -1,6 +1,6 @@
 import React from "react";
 import App from "../App";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { HashRouter, Route, Switch } from "react-router-dom";
 import { NightModeProvider } from "../context/NightMode";
 import { ModalProvider } from "../context/ModalContext";
 import Login from "./Login";
@@ -9,7 +9,7 @@ import Register from "./Register";
 const Home = () => {
   return (
     <div>
-      <Router>
+      <HashRouter>
         <Switch>
           <NightModeProvider>
             <ModalProvider>
@@ -19,7 +19,7 @@ const Home = () => {
             </ModalProvider>
           </NightModeProvider>
         </Switch>
-      </Router>
+      </HashRouter>
     </div>
   );
 };
