@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import NightMode from "../context/NightMode";
 
 const Header = () => {
@@ -46,7 +47,9 @@ const Header = () => {
               ></div>
             </div>
           </div>
-          <button className="header__login">INICIAR SESION</button>
+          <Link to="/login" className="header__login">
+            INICIAR SESION
+          </Link>
         </div>
       </div>
     </div>

@@ -1,0 +1,92 @@
+.home__login {
+  color: white;
+  font-size: 20px;
+  text-decoration: none;
+  padding-left: 10px;
+  display: flex;
+  align-items: center;
+}
+.day {
+  color: black;
+}
+.todolist__login {
+  height: 100vh;
+  width: 100vw;
+}
+.form__container {
+  height: 97vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.form__login {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #12c2e9; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #f64f59,
+    #c471ed,
+    #12c2e9
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #f64f59,
+    #c471ed,
+    #12c2e9
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  padding: 30px 15px;
+  border-radius: 20px;
+}
+.form__loginInput {
+  margin-bottom: 15px;
+}
+.login__createUser {
+  color: black;
+  text-align: center;
+  margin-bottom: 15px;
+}
+.form__loginUser {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.form__loginUserInput {
+  outline: none;
+  border-radius: 5px;
+  border: none;
+}
+.form__loginPasswordInput {
+  outline: none;
+  border-radius: 5px;
+  border: none;
+}
+.form__loginPassword {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.form__loginInput {
+  background-color: #8bdb8e;
+  border: none;
+  font-size: 18px;
+  padding: 5px;
+  border-radius: 5px;
+}
+.socialLink__loginContainer {
+  display: flex;
+  justify-content: space-around;
+}
+.socialLink {
+  background-color: transparent;
+  border: none;
+  padding: 5px 5px;
+  color: white;
+  display: flex;
+  align-items: center;
+}
+.socialLink__icon {
+  height: 40px;
+}

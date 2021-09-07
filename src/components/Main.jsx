@@ -13,18 +13,18 @@ const initialForm = {
 };
 const Main = () => {
   const [form, setForm] = useState(initialForm);
-  const { modal, setModal } = useContext(ModalContext);
+  const { setModal, modal } = useContext(ModalContext);
   const { db, createHomework, dataToEdit, updateHomework } =
     useContext(CrudContext);
 
   useEffect(() => {
     if (dataToEdit) {
-      setForm(dataToEdit);
       setModal(true);
+      setForm(dataToEdit);
     } else {
       setForm(initialForm);
     }
-  }, [dataToEdit]);
+  }, [dataToEdit, setModal]);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });

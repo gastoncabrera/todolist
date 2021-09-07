@@ -51,11 +51,13 @@
   left: 0;
 }
 .header__login {
+  text-decoration: none;
   width: 90px;
   border-radius: 5px;
   padding: 5px 10px;
   color: white;
   border: none;
+  text-align: center;
   background-color: #2980b9;
 }
 .header__logo {

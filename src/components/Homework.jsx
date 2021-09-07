@@ -19,7 +19,11 @@ const Homework = ({ item }) => {
     setComplete(true);
   };
   return (
-    <div className="homework__container">
+    <div
+      className={
+        complete ? "homework__container complete" : "homework__container"
+      }
+    >
       <div className="homework__titleContainer">
         <h4
           className={

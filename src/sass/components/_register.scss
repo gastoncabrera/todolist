@@ -1,0 +1,59 @@
+.todolist__register {
+  height: 100vh;
+  width: 100vw;
+}
+.form__container {
+  height: 97vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.form__register {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #12c2e9; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #f64f59,
+    #c471ed,
+    #12c2e9
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #f64f59,
+    #c471ed,
+    #12c2e9
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  padding: 30px 15px;
+  border-radius: 20px;
+}
+.form__registerSubmit {
+  margin-bottom: 10px;
+}
+.form__registerUser {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+.form__registerEmail {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+.form__registerPassword {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+.register__createUser {
+  text-align: center;
+}
+.form__registerSubmit {
+  background-color: #8bdb8e;
+  border: none;
+  font-size: 18px;
+  padding: 5px;
+  border-radius: 5px;
+}

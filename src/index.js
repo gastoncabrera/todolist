@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import Home from "./components/Home";
 import reportWebVitals from "./reportWebVitals";
-
+import "./Firebase";
 ReactDOM.render(
   <React.StrictMode>
     <Home />
