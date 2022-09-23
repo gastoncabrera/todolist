@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import App from "../App";
 import { HashRouter, Route, Switch } from "react-router-dom";
 import { NightModeProvider } from "../context/NightMode";

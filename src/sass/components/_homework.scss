@@ -5,10 +5,10 @@
   justify-content: center;
   align-items: center;
 }
-.homework__titleIncomplete {
+.homework__titleIncompleted {
   width: 100%;
 }
-.homework__titleComplete {
+.homework__titlecompleted {
   text-decoration: line-through;
   width: 100%;
 }
@@ -54,6 +54,6 @@
 .homework__descriptionNight {
   color: white;
 }
-.complete {
+.completed {
   opacity: 0.4;
 }

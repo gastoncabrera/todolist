@@ -3,31 +3,35 @@ import CrudContext from "../context/CrudContext";
 import NightMode from "../context/NightMode";
 
 const Homework = ({ item }) => {
-  const { setDataToEdit, completeHomework, deleteHomework } =
+  const { setDataToEdit, completedHomework, deleteHomework } =
     useContext(CrudContext);
   const [description, setDescription] = useState(false);
-  const [complete, setComplete] = useState(false);
   const { nightMode } = useContext(NightMode);
   const edit = (item) => {
-    if (!item.complete) setDataToEdit(item);
+    if (!item.completed) setDataToEdit(item);
     else {
       alert("No se puede editar una tarea completada");
     }
   };
-  const completefunction = () => {
-    completeHomework(item);
-    setComplete(true);
+  const completedfunction = () => {
+    const res = {
+      _id:item._id,
+      title: item.title,
+      activity: item.activity,
+      completed : !item.completed
+    }
+    completedHomework(res);
   };
   return (
     <div
       className={
-        complete ? "homework__container complete" : "homework__container"
+        item.completed ? "homework__container completed" : "homework__container"
       }
     >
       <div className="homework__titleContainer">
         <h4
           className={
-            complete ? "homework__titleComplete" : "homework__titleIncomplete"
+            item.completed ? "homework__titlecompleted" : "homework__titleIncompleted"
           }
           onClick={() => setDescription(!description)}
         >
@@ -48,7 +52,7 @@ const Homework = ({ item }) => {
           </div>
           <div
             className="homework__check item"
-            onClick={() => completefunction(item)}
+            onClick={() => completedfunction(item)}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -63,7 +67,7 @@ const Homework = ({ item }) => {
           </div>
           <div
             className="homework__delete item"
-            onClick={() => deleteHomework(item.id)}
+            onClick={() => deleteHomework(item._id)}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

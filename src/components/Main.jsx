@@ -9,7 +9,7 @@ const initialForm = {
   title: "",
   activity: "",
   id: null,
-  complete: false,
+  completed: false,
 };
 const Main = () => {
   const [form, setForm] = useState(initialForm);

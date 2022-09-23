@@ -47,9 +47,9 @@ const Header = () => {
               ></div>
             </div>
           </div>
-          <Link to="/login" className="header__login">
+          <div  className="header__login"  onClick={() => alert('Perdón todavía no está disponible esta función')}>
             INICIAR SESION
-          </Link>
+          </div>
         </div>
       </div>
     </div>
