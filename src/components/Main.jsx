@@ -67,7 +67,6 @@ const Main = () => {
       <ModalForm>
         <form className="modal__form" onSubmit={handleSubmit}>
           <label htmlFor="tarea" className="modal__title">
-            Titulo
             <input
               type="text"
               id="tarea"
@@ -75,15 +74,16 @@ const Main = () => {
               value={form.title}
               className="modal__inputTitle"
               onChange={handleChange}
+              placeholder="Titulo de la tarea..."
             />
           </label>
           <label htmlFor="activity" className="modal__activity">
-            Que Hacer?
             <textarea
               onChange={handleChange}
               className="modal__inputActivity"
               name="activity"
               value={form.activity}
+              placeholder="Actividad a realizar..."
               id="activity"
               cols="20"
               rows="10"
