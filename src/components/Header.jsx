@@ -1,9 +1,19 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link,useHistory } from "react-router-dom";
 import NightMode from "../context/NightMode";
 
 const Header = () => {
   const { nightMode, setNightMode } = useContext(NightMode);
+  let history = useHistory();
+
+  const closeSesion = () => {
+    sessionStorage.removeItem('JWT');
+    localStorage.removeItem('id')
+    sessionStorage.clear()
+    localStorage.clear()
+    history.push("/login")
+  }
+
   return (
     <div className="header">
       <div className="header__container container">
@@ -47,9 +57,7 @@ const Header = () => {
               ></div>
             </div>
           </div>
-          <div  className="header__login"  onClick={() => alert('Perdón todavía no está disponible esta función')}>
-            INICIAR SESION
-          </div>
+          <button className="header__login" onClick={()=>{closeSesion()}}>Cerrar Sesion</button>
         </div>
       </div>
     </div>

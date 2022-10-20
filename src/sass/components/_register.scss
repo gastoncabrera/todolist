@@ -37,17 +37,30 @@
   justify-content: space-between;
   margin-bottom: 15px;
 }
+.form__registerUserInput{
+  border-radius: 5px;
+  border: none;
+}
 .form__registerEmail {
   display: flex;
   justify-content: space-between;
   margin-bottom: 15px;
+}
+.form__registerEmailInput{
+  border-radius: 5px;
+  border: none;
 }
 .form__registerPassword {
   display: flex;
   justify-content: space-between;
   margin-bottom: 15px;
 }
+.form__registerPasswordInput{
+  border-radius: 5px;
+  border: none;
+}
 .register__createUser {
+  margin-top: 15px;
   text-align: center;
 }
 .form__registerSubmit {

@@ -1,25 +1,30 @@
 import React, { useEffect, useState } from "react";
 import App from "../App";
-import { HashRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, useHistory } from "react-router-dom";
 import { NightModeProvider } from "../context/NightMode";
 import { ModalProvider } from "../context/ModalContext";
 import Login from "./Login";
 import Register from "./Register";
+import NotFound from "./NotFound";
 
 const Home = () => {
+
   return (
     <div>
-      <HashRouter>
+      <Router>
         <Switch>
           <NightModeProvider>
             <ModalProvider>
-              <Route path="/" exact component={App} />
-              <Route path="/login" exact component={Login} />
-              <Route path="/register" exact component={Register} />
+              <Switch>
+                <Route path="/" exact ><App /></Route>
+                <Route path="/login" exact ><Login /></Route>
+                <Route path="/register" exact><Register /></Route>
+                <Route path="*"><NotFound /></Route>
+              </Switch>
             </ModalProvider>
           </NightModeProvider>
         </Switch>
-      </HashRouter>
+      </Router>
     </div>
   );
 };

@@ -8,7 +8,7 @@ import CrudContext from "../context/CrudContext";
 const initialForm = {
   title: "",
   activity: "",
-  id: null,
+  id:null,
   completed: false,
 };
 const Main = () => {
@@ -32,7 +32,6 @@ const Main = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!form.title || !form.activity) {
-      alert("Completar el formulario");
       return;
     }
     if (form.id === null) {
@@ -71,6 +70,7 @@ const Main = () => {
               type="text"
               id="tarea"
               name="title"
+              required
               value={form.title}
               className="modal__inputTitle"
               onChange={handleChange}
@@ -85,6 +85,7 @@ const Main = () => {
               value={form.activity}
               placeholder="Actividad a realizar..."
               id="activity"
+              required
               cols="20"
               rows="10"
             ></textarea>

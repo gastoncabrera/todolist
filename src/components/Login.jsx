@@ -1,24 +1,55 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link,useHistory } from "react-router-dom";
 import { useFirebaseApp } from "reactfire";
 import NightMode from "../context/NightMode";
 
 const inicialLogin = {
-  userLogin: "",
+  email: '',
+  password: ''
 };
 
 const Login = (props) => {
+  let history = useHistory();
   const { nightMode } = useContext(NightMode);
+  const [error, setError] = useState(null)
   const [form, setForm] = useState(inicialLogin);
+  const [loading, setLoading] = useState(false)
 
   const handleSubmitLogin = (e) => {
     e.preventDefault();
-    props.history.push("/");
+    try {
+      setLoading(true)
+      fetch("https://evening-brook-24489.herokuapp.com/auth/login", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Auth': 'ABC1234'
+        },
+        body: JSON.stringify(form)
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if(!data.user) {
+            setError(data.message)
+          }else {
+            sessionStorage.setItem('JWT', data.access_token)
+            localStorage.setItem('username',data?.user.userName)
+            localStorage.setItem('id',data?.user._id)
+            setLoading(false)
+            history.push("/")
+          }
+        }
+        )
+        .catch(err => {console.log(err);setLoading(false)})
+    } catch (error) {
+      setLoading(false)
+      console.log(error)
+    }
   };
   const handleChangeLogin = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
-  const handleResetLogin = () => {};
+  const handleResetLogin = () => { };
 
   return (
     <>
@@ -27,31 +58,16 @@ const Login = (props) => {
           nightMode ? "todolist__login" : "todolist__login moonContainer"
         }
       >
-        <Link to="/" className={nightMode ? "home__login day" : "home__login"}>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            fill="currentColor"
-            class="bi bi-chevron-left"
-            viewBox="0 0 16 16"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"
-            />
-          </svg>
-          Volver al inicio
-        </Link>
         <div className="form__container">
           <form className="form__login" onSubmit={handleSubmitLogin}>
             <label htmlFor="user" className="form__loginUser">
               Usuario
               <input
-                type="user"
+                type="email"
                 id="user"
-                name="userLogin"
-                form={form.userLogin}
+                required
+                value={form.email}
+                name={'email'}
                 onChange={handleChangeLogin}
                 className="form__loginUserInput"
               />
@@ -61,16 +77,25 @@ const Login = (props) => {
               <input
                 type="password"
                 id="password"
+                required
+                value={form.password}
+                name={'password'}
+                onChange={handleChangeLogin}
                 className="form__loginPasswordInput"
               />
             </label>
-            <input type="submit" value="Iniciar" className="form__loginInput" />
+            <button type="submit" className="form__loginInput">{loading?'Cargando...': 'Iniciar Sesion'}</button>
+            {
+              !error ? <div></div> :
+                <span style={{ color: 'red', fontSize: '22px', textAlign: 'center' }}>{error}</span>
+            }
             <Link to="/register" className="login__createUser">
               Crear usuario
             </Link>
-            <div className="socialLink__loginContainer">
+            {/* <div className="socialLink__loginContainer">
               <button className="socialLink google">
                 <img
+                  alt="google"
                   src="https://i.ibb.co/QjDZFsF/google-Icon-removebg-preview-1.png"
                   className="socialLink__icon"
                 />
@@ -78,12 +103,13 @@ const Login = (props) => {
               </button>
               <button className="socialLink facebook">
                 <img
+                  alt="facebook"
                   src="https://i.ibb.co/CzGmwKY/Facebook-Icon-removebg-preview.png"
                   className="socialLink__icon"
                 />
                 Iniciar con Facebook
               </button>
-            </div>
+            </div> */}
           </form>
         </div>
       </div>
