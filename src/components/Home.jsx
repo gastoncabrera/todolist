@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import App from "../App";
-import { BrowserRouter as Router, Route, Switch, useHistory } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { NightModeProvider } from "../context/NightMode";
 import { ModalProvider } from "../context/ModalContext";
 import Login from "./Login";

@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
 import { Link,useHistory } from "react-router-dom";
-import { useFirebaseApp } from "reactfire";
 import NightMode from "../context/NightMode";
 
 const inicialLogin = {
@@ -8,7 +7,7 @@ const inicialLogin = {
   password: ''
 };
 
-const Login = (props) => {
+const Login = () => {
   let history = useHistory();
   const { nightMode } = useContext(NightMode);
   const [error, setError] = useState(null)
@@ -49,7 +48,6 @@ const Login = (props) => {
   const handleChangeLogin = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
-  const handleResetLogin = () => { };
 
   return (
     <>

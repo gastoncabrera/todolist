@@ -40,7 +40,6 @@ const CrudProvider = ({ children }) => {
 
   const updateHomework = async (item) => {
     const token = sessionStorage.getItem('JWT')
-    const username = localStorage.getItem('username')
     try {
       setIsloading(true)
       await fetch(`https://evening-brook-24489.herokuapp.com/task/${item._id}`, {
